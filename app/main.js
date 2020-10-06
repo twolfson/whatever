@@ -16,6 +16,11 @@ const url = require('url')
 const nconf = require('nconf')
 const autoLaunch = require('auto-launch');
 
+// https://stackoverflow.com/a/52633637/1960509
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+  app.quit();
+}
 
 //require('app-module-path').addPath(__dirname);
 //const config = require('./config/config.json')
@@ -173,6 +178,7 @@ function launchApp () {
 // Some APIs can only be used after this event occurs.
 //app.on('ready', createWindow)
 app.on('ready', launchApp)
+app.on('second-instance', createWindow)
 /*app.on('ready', () => {
     if ( !config.backgroundMode ) { createWindow }
 })*/
