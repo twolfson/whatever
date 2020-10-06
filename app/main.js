@@ -102,8 +102,8 @@ function createWindow () {
   mainWindow.loadURL('https://www.evernote.com/Home.action')
   
   //hide the default menu
-  mainWindow.setMenu(null)
-  
+  // mainWindow.setMenu(null)
+
   //prevent window title changing
   mainWindow.on('page-title-updated', event => {
       event.preventDefault()
